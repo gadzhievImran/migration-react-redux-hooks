@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 import './App.css';
+import { setIncrement, setDecrement, setReset } from '../model/action/appAction';
 
 function App(props) {
-  const { counter, setIncrement, setDecrement, setReset } = props;
+  const newCounter = useSelector(state => state.appReducer.counter);
+  const dispatch = useDispatch();
 
-  const newCounter = useSelector(state => state.appReducer);
   useEffect(() => {
     console.log(newCounter, 'newCounter');
   });
@@ -26,12 +27,12 @@ function App(props) {
           Using hooks of react-redux
         </h1>
         <div style={{ display: 'flex', width: '100%' }}>
-          <button onClick={() => setDecrement()}>-</button>
-          <button>{counter}</button>
-          <button onClick={() => setIncrement()}>+</button>
+          <button onClick={() => dispatch(setDecrement())}>-</button>
+          <button>{newCounter}</button>
+          <button onClick={() => dispatch(setIncrement())}>+</button>
         </div>
         <div style={{ width: '100%' }}>
-          <button onClick={() => setReset()}>Reset</button>
+          <button onClick={() => dispatch(setReset())}>Reset</button>
         </div>
       </div>
     </div>

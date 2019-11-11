@@ -1,0 +1,28 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+.app {
+    color: white;
+    display: flex;
+    background-color: #212121;
+    text-align: center;
+ }
+
+.app div {
+    width: 30%;
+    height: 100px;
+    margin: auto;
+}
+
+.app div button {
+    padding: 20px;
+    background-color: #673ab7;
+    color: white;
+    font-family: Serif;
+    font-size: 20px;
+    border: 1px solid #212121;
+    border-radius: 5px;
+    width: 100%;
+}

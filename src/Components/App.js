@@ -1,16 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector, useDispatch, useStore } from 'react-redux';
 
 import './App.css';
 import { setIncrement, setDecrement, setReset } from '../model/action/appAction';
 
 function App(props) {
-  const newCounter = useSelector(state => state.appReducer.counter);
+  const state = useSelector(state => state.appReducer);
+  const { counter } = state;
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    console.log(newCounter, 'newCounter');
-  });
+  const store = useStore();
 
   useEffect(() => {
     if(window.clientHeight) {
@@ -28,7 +26,7 @@ function App(props) {
         </h1>
         <div style={{ display: 'flex', width: '100%' }}>
           <button onClick={() => dispatch(setDecrement())}>-</button>
-          <button>{newCounter}</button>
+          <button>{counter}</button>
           <button onClick={() => dispatch(setIncrement())}>+</button>
         </div>
         <div style={{ width: '100%' }}>
